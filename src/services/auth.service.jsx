@@ -33,6 +33,10 @@ export default class AuthService {
         return localStorage.getItem('token');
     }
 
+    getAdmin() {
+        return localStorage.getItem('admin');
+    }
+
     getUserProfil() {
         return jwtDecode(this.getToken());
     }

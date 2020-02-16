@@ -10,79 +10,75 @@ export class SignUpForm extends Component {
             email: '',
             password: '',
             firstname: '',
-            lastname: ''
+            lastname: '',
+            admin: false,
+            role: ''
         }
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.Auth = new AuthService();
-    }
-
-    handleChange(event) {
-        this.setState({
-            [event.target.id]: event.target.value
-        })
-    }
-
-    handleSubmit(event) {
-        event.preventDefault();
-        if (!this.state.email || this.state.email.length === 0 || !this.state.password || this.state.password.length === 0) {
-            return;
-        }
-        this.Auth.SignUp(this.state)
-            .then(data => {
+        
+            this.handleChange = this.handleChange.bind(this);
+            this.handleForm = this.handleForm.bind(this);
+            this.Auth = new AuthService();
+          }
+        
+          handleChange(event) {
+            this.setState({
+              [event.target.name]: event.target.value
+            });
+          }
+        
+          handleForm(event) {
+            event.preventDefault();
+            this.Auth.SignUp(this.state)
+              .then(data => {
                 localStorage.setItem('token', data.token);
-                localStorage.setItem('admin', data.body.admin);
-                window.location = "/account"
-            })
-            .catch(err => {
+                localStorage.setItem('admin', data.admin);
+                window.location = "login"
+              })
+              .catch(err => {
                 console.log(err);
-            })
-    }
+              })
+          }
 
     render() {
         return (
-            <div>
-                <form>
+            <div className="d-flex justify-content-center mt-5">
+                <form onSubmit={this.handleForm}>
                     <div className="form-group">
-                        <label>Email</label>
-                        <input
-                            type="email"
-                            name="email"
-                            //value={this.state.email}
-                            onChange={this.handleChange}
-                        />
+                        <label htmlFor="">Email address</label>
+                        <input type="email" name="email" onChange={this.handleChange} className="form-control" placeholder="Enter email" />
+                        <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="">Firstname</label>
-                        <input
-                            type="firstname"
-                            name="firstname"
-                            //value={this.state.firstname}
-                            onChange={this.handleChange}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="">Lastname</label>
-                        <input
-                            type="lastname"
-                            name="lastname"
-                            //value={this.state.lastname}
-                            onChange={this.handleChange}
-                        />
-                    </div>
+
                     <div className="form-group">
                         <label htmlFor="">Password</label>
-                        <input
-                            type="password"
-                            name="password"
-                            //value={this.state.password}
-                            onChange={this.handleChange}
-                        />
+                        <input type="password" name="password" onChange={this.handleChange} className="form-control" placeholder="Password" />
                     </div>
+
                     <div className="form-group">
-                        <input type="submit" value="connexion" />
+                        <label htmlFor="">firstname</label>
+                        <input type="text" name="firstname" onChange={this.handleChange} className="form-control" placeholder="firstname" />
                     </div>
+
+                    <div className="form-group">
+                        <label htmlFor="">lastname</label>
+                        <input type="test" name="lastname" onChange={this.handleChange} className="form-control" placeholder="lastname" />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="">role</label>
+                        <input type="text" name="role" onChange={this.handleChange} className="form-control" placeholder="role" />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="">admin</label>
+                        <small id="emailHelp" className="form-text text-muted">False by default</small>
+                        <input type="checkbox" name="admin" value="True" onChange={this.handleChange} className="form-control" placeholder="True" />
+                        
+                    </div>
+
+                    <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
             </div>
         );

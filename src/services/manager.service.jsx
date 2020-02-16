@@ -14,7 +14,7 @@ export default class ManagerService {
 
     CreateManager(body) {
         return fetch(
-            url + 'auth/manager', {
+            url + 'manager', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8',
@@ -29,13 +29,12 @@ export default class ManagerService {
 
     ReadManager() {
         return fetch(
-            url + 'auth/manager', {
+            url + 'manager', {
             method: 'get',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8',
                 'x-access-token': this.getToken()
-            },
-            body: JSON.stringify(body)
+            }
         }).then(res => {
             console.log(res);
             return res.json();
@@ -68,7 +67,6 @@ export default class ManagerService {
             method: "DELETE",
             headers: { "x-access-token": this.getToken() }
           }).then(function(res) {
-            console.log(res);
             return res.json();
           });
     }

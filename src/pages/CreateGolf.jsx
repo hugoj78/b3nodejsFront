@@ -1,43 +1,41 @@
 import React, { Component } from 'react';
 import AuthService from '../services/auth.service';
+import GolfService from '../services/golf.service';
+import CreateGolfFrom from '../components/CreateGolfForm'
 
-export class Home extends Component {
+export class CreateGolf extends Component {
 
     constructor() {
         super();
         this.state = {
-            title: 'Account User',
-            question: 'Are you an admin ?',
-            email: '',
-            admin: false
+            admin: false,
+            golfUser: []
         }
 
         this.Auth = new AuthService();
+        this.Golf = new GolfService();
 
         const profil = this.Auth.getUserProfil();
-        console.log(profil);
-        this.state.email = profil.email;
         this.state.admin = profil.admin;
+
     }
 
 
     render() {
-        if (this.profil !== "") {
+        if (this.state.admin) {
             return (
                 <div>
-                    <h1> {this.state.title} </h1>
-                    <p> {this.state.question} </p>
-                    <p>{this.state.admin.toString()}</p>
+                    <CreateGolfFrom/>
                 </div>
-            );
+            )
         } else {
             return (
                 <div>
-                    <p>No one</p>
+                    <p>You don't have the rights</p>
                 </div>
             );
         }
     }
 }
 
-export default Home;
+export default CreateGolf;

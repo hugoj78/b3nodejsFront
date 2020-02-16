@@ -14,7 +14,7 @@ export default class GolfService {
 
     CreateGolf(body) {
         return fetch(
-            url + 'auth/golf', {
+            url + 'golf', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8',
@@ -29,13 +29,12 @@ export default class GolfService {
 
     ReadGolf() {
         return fetch(
-            url + 'auth/golf', {
+            url + 'golf', {
             method: 'get',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8',
                 'x-access-token': this.getToken()
-            },
-            body: JSON.stringify(body)
+            }
         }).then(res => {
             console.log(res);
             return res.json();
