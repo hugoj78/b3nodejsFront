@@ -13,26 +13,34 @@ export class Home extends Component {
         this.Auth = new AuthService();
 
         const profil = this.Auth.getUserProfil();
-        console.log(profil);
+        //console.log(profil);
 
-        this.Auth.getUserDetail(profil.id)
-        .then(data => {
-            console.log(data);
-            this.setState({
-                user: data
-            })
-        })
-        
+        // this.Auth.getUserDetail(profil.id)
+        //     .then(data => {
+        //         console.log(data);
+        //         this.setState({
+        //             user: data
+        //         })
+        //     })
+
     }
 
 
     render() {
-        return (
-            <div>
-                <h1> {this.state.title} </h1>
-                <p>{this.state.user.email}</p>
-            </div>
-        );
+        if (this.profil !== "") {
+            return (
+                <div>
+                    <h1> {this.state.title} </h1>
+                    <p>{this.profil}</p>
+                </div>
+            );
+        } else {
+            return (
+                <div>
+                    <p>No one</p>
+                </div>
+            );
+        }
     }
 }
 

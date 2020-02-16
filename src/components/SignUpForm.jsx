@@ -33,7 +33,7 @@ export class SignUpForm extends Component {
             .then(data => {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('admin', data.body.admin);
-                window.location = "../pages/Account"
+                window.location = "/account"
             })
             .catch(err => {
                 console.log(err);

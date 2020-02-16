@@ -46,4 +46,8 @@ export default class AuthService {
                 return res.json();
             })
     }
+
+    disconnectUser() {
+        localStorage.clear();
+    }
 }
