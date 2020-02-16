@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import AuthService from '../services/auth.service';
-import ManagerService from '../services/golf.service';
 import EditManagerForm from '../components/EditManagerForm'
 
-export class EditGolf extends Component {
+export class EditManager extends Component {
 
     constructor(props) {
         super(props);
@@ -14,7 +13,6 @@ export class EditGolf extends Component {
         }
 
         this.Auth = new AuthService();
-        this.Manager = new ManagerService();
 
         const profil = this.Auth.getUserProfil();
         this.state.admin = profil.admin;

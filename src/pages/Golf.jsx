@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AuthService from '../services/auth.service';
 import GolfService from '../services/golf.service';
 import {Table, Button} from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 
 export class Golf extends Component {
 
@@ -32,6 +33,11 @@ export class Golf extends Component {
         window.location = "/createGolf"
     }
 
+    DeleteGolf(id) {
+        this.Golf.DeleteGolf(id);
+        window.location.reload();
+    }
+
 
     render() {
         if (this.state.admin) {
@@ -42,8 +48,8 @@ export class Golf extends Component {
                     <td>{data.longitude}</td>
                     <td>{data.description}</td>
                     <td>{data.id_manager}</td>
-                    <td>EDIT</td>
-                    <td>DELETE</td>
+                    <td><Link to={"/editgolf/" + data._id}><Button className="btn btn-warning">Edit</Button></Link></td>
+                    <td><Button className="btn  btn-danger" onClick={(e) => this.DeleteGolf(data._id)}> Delete </Button></td>
                 </tr>
             ));
             return (

@@ -9,12 +9,12 @@ export default class Header extends Component {
 
         this.disconnect = this.disconnect.bind(this);
         this.Auth = new AuthService();
-        
-        if(this.Auth.getToken() !== null) {
+
+        if (this.Auth.getToken() !== null) {
             const profil = this.Auth.getUserProfil();
         }
     }
-    
+
 
     disconnect() {
         this.Auth.disconnectUser()
@@ -25,53 +25,51 @@ export default class Header extends Component {
     render() {
         if (this.Auth.getToken() !== null) {
             return (
-                <div>
-                    <div className="mb-5">
-                        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                            <a className="navbar-brand" href="/">
-                                Home
-                            </a>
-                            <div className="collapse navbar-collapse" id="navbarNav">
-                                <ul className="navbar-nav">
-                                    <li className="nav-item active">
-                                        <a className="nav-link" href="/account">Account <span className="sr-only">(current)</span></a>
-                                    </li>
-                                    <li className="nav-item active">
-                                        <a className="nav-link" href="/golf">Golf<span className="sr-only">(current)</span></a>
-                                    </li>
-                                    <li className="nav-item active">
-                                        <a className="nav-link" href="/manager">Manager<span className="sr-only">(current)</span></a>
-                                    </li>
-                                    <li><Button onClick={this.disconnect} block bsSize="large" type="submit">Log Out</Button></li>
-                                </ul>
-                            </div>
-                        </nav>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="/">GolfManager3000</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/account">Account <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/golf">Golf</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/manager">Manager</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" onClick={this.disconnect}>Log Out</a>
+                            </li>
+                        </ul>
                     </div>
-                </div>
+                </nav>
             );
         } else {
             return (
-                <div>
-                    <div className="mb-5">
-                        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                            <a className="navbar-brand" href="/">
-                                Home
-                            </a>
-                            <div className="collapse navbar-collapse" id="navbarNav">
-                                <ul className="navbar-nav">
-                                    <li className="nav-item active">
-                                        <a className="nav-link" href="/login">Login <span className="sr-only">(current)</span></a>
-                                    </li>
-                                    <li className="nav-item active">
-                                        <a className="nav-link" href="/signup">Signup <span className="sr-only">(current)</span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </nav>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="/">GolfManager3000</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login">Log In <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/signup">Sign In</a>
+                            </li>
+                        </ul>
                     </div>
-                </div>
+                </nav>
             );
         }
-        
+
     }
 }

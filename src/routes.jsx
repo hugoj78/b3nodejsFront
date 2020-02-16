@@ -9,6 +9,7 @@ import CreateManager from './pages/CreateManager';
 import Golf from './pages/Golf';
 import CreateGolf from './pages/CreateGolf';
 import EditManager from './pages/EditManager';
+import EditGolf from './pages/EditGolf';
 
 export class Routes extends Component {
     render() {
@@ -23,6 +24,7 @@ export class Routes extends Component {
                 <Route exact path='/editmanager/:id' component={EditManager}/>
                 <Route exact path='/golf' component={Golf}/>
                 <Route exact path='/creategolf' component={CreateGolf}/>
+                <Route exact path='/editgolf/:id' component={EditGolf}/>
             </div>
         )
     }

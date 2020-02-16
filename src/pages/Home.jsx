@@ -6,7 +6,8 @@ export class Home extends Component {
         super();
         this.state = {
             title: 'Home',
-            subtitle: 'Merci WassLaMenace'
+            subtitle: 'Welcome on Golf Manager 3000',
+            text: 'Log In or Sign up for more'
         }
     }
 
@@ -14,8 +15,12 @@ export class Home extends Component {
     render() {
         return (
             <div>
+                <br/>
+                <br/>
+                <br/>
                 <h1> {this.state.title} </h1>
                 <p> {this.state.subtitle} </p>
+                <p> {this.state.text} </p>
 
             </div>
         );

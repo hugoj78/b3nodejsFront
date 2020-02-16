@@ -42,6 +42,7 @@ export class Manager extends Component {
         if (this.state.admin) {
             const manager = this.state.managerUser.map((data, key) => (
                 <tr key={key}>
+                    <td>{data._id}</td>
                     <td>{data.email}</td>
                     <td>{data.firstname}</td>
                     <td>{data.lastname}</td>
@@ -55,6 +56,7 @@ export class Manager extends Component {
                     <Table responsive>
                     <thead>
                         <tr>
+                        <th>Id</th>
                         <th>Email</th>
                         <th>Firstname</th>
                         <th>Lastname</th>
