@@ -33,7 +33,7 @@ export class SignUpForm extends Component {
             .then(data => {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('admin', data.body.admin);
-                window.location = "/Home"
+                window.location = "../pages/Account"
             })
             .catch(err => {
                 console.log(err);
@@ -45,11 +45,11 @@ export class SignUpForm extends Component {
             <div>
                 <form>
                     <div className="form-group">
-                        <label htmlFor="">Email</label>
+                        <label>Email</label>
                         <input
                             type="email"
                             name="email"
-                            value={this.state.email}
+                            //value={this.state.email}
                             onChange={this.handleChange}
                         />
                     </div>
@@ -58,7 +58,7 @@ export class SignUpForm extends Component {
                         <input
                             type="firstname"
                             name="firstname"
-                            value={this.state.firstname}
+                            //value={this.state.firstname}
                             onChange={this.handleChange}
                         />
                     </div>
@@ -67,7 +67,7 @@ export class SignUpForm extends Component {
                         <input
                             type="lastname"
                             name="lastname"
-                            value={this.state.lastname}
+                            //value={this.state.lastname}
                             onChange={this.handleChange}
                         />
                     </div>
@@ -76,7 +76,7 @@ export class SignUpForm extends Component {
                         <input
                             type="password"
                             name="password"
-                            value={this.state.password}
+                            //value={this.state.password}
                             onChange={this.handleChange}
                         />
                     </div>

@@ -3,8 +3,8 @@ import AuthService from '../services/auth.service'
 
 export class LoginForm extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       email: '',
@@ -12,7 +12,7 @@ export class LoginForm extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleForm.bind(this);
     this.Auth = new AuthService();
   }
 
@@ -23,13 +23,13 @@ export class LoginForm extends Component {
     console.log(this.state);
   }
 
-  handleSubmit(event) {
+  handleForm(event) {
     event.preventDefault();
     this.Auth.login(this.state)
       .then(data => {
         localStorage.setItem('token', data.token);
         localStorage.setItem('admin', data.body.admin);
-        window.location ="/Account"
+        window.location = "../pages/Account"
       })
       .catch(err => {
         console.log(err);
@@ -38,33 +38,20 @@ export class LoginForm extends Component {
 
   render() {
     return (
-      <div>
-        <form>
+      <div className="d-flex justify-content-center mt-5">
+        <form onSubmit={this.handleForm}>
           <div className="form-group">
-            <label htmlFor="">
-              Email
-                  </label>
-            <input
-              type="email"
-              name="email"
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
+            <label htmlFor="">Email address</label>
+            <input type="email" name="email" value={this.state.email} onChange={this.handleChange} className="form-control" placeholder="Enter email" />
+            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone
+                else.
+                        </small>
           </div>
           <div className="form-group">
-            <label htmlFor="">
-              Password
-                  </label>
-            <input
-              type="password"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
+            <label htmlFor="">Password</label>
+            <input type="password" name="password" value={this.state.password} onChange={this.handleChange} className="form-control" placeholder="Password" />
           </div>
-          <div className="form-group">
-            <input type="submit" value="connexion" />
-          </div>
+          <button type="submit" className="btn btn-primary">Submit</button>
         </form>
       </div>
     );

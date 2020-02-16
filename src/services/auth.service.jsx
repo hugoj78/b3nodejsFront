@@ -6,7 +6,7 @@ export default class AuthService {
             'http://localhost:3030/api/v1/auth/login', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json; charset=utf-8'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(body)
         }).then(res => {
