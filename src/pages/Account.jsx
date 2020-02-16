@@ -24,12 +24,20 @@ export class Home extends Component {
 
 
     render() {
-        return (
-            <div>
-                <h1>{ this.state.title }</h1>
-                <p>{ this.state.user.email }</p>
-            </div>
-        );
+        if (this.profil !== "") {
+            return (
+                <div>
+                    <h1> {this.state.title} </h1>
+                    <p>{this.profil}</p>
+                </div>
+            );
+        } else {
+            return (
+                <div>
+                    <p>No one</p>
+                </div>
+            );
+        }
     }
 }
 
