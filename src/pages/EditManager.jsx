@@ -3,14 +3,13 @@ import AuthService from '../services/auth.service';
 import ManagerService from '../services/golf.service';
 import EditManagerForm from '../components/EditManagerForm'
 
-export class EditManager extends Component {
+export class EditGolf extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
             admin: false,
-            golfUser: [],
             id: props.match.params.id
         }
 

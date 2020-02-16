@@ -3,8 +3,10 @@ import AuthService from '../services/auth.service';
 
 export class Home extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        this.Auth = new AuthService();
+
         this.state = {
             title: 'Account User',
             question: 'Are you an admin ?',
