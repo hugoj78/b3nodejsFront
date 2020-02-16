@@ -3,34 +3,31 @@ import AuthService from '../services/auth.service';
 
 export class Home extends Component {
 
-    constructor() {
-        super();
-        this.state = {
-            title: 'Account User',
-            user: []
-        }
-
+    constructor(props) {
+        super(props);
         this.Auth = new AuthService();
 
+        this.state = {
+            title: 'Account User',
+            user: {}
+        };
+
         const profil = this.Auth.getUserProfil();
-        console.log(profil);
 
         this.Auth.getUserDetail(profil.id)
         .then(data => {
-            console.log(data);
             this.setState({
                 user: data
-            })
-        })
-        
+            });
+        });
     }
 
 
     render() {
         return (
             <div>
-                <h1> {this.state.title} </h1>
-                <p>{this.state.user.email}</p>
+                <h1>{ this.state.title }</h1>
+                <p>{ this.state.user.email }</p>
             </div>
         );
     }
