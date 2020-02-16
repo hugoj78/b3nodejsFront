@@ -1,3 +1,8 @@
+Groupe : MATOUGUI Wassim, EGU Hugo-Jean
+
+Lien github API : https://github.com/hugoj78/b3nodejsApi
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
