@@ -17,6 +17,9 @@ export default class Header extends Component {
                                 <li className="nav-item active">
                                     <a className="nav-link" href="/account">Account <span className="sr-only">(current)</span></a>
                                 </li>
+                                <li className="nav-item active">
+                                    <a className="nav-link" href="/signup">Signup <span className="sr-only">(current)</span></a>
+                                </li>
                             </ul>
                         </div>
                     </nav>
