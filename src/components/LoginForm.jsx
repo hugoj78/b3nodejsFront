@@ -12,15 +12,14 @@ export class LoginForm extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleForm.bind(this);
+    this.handleForm = this.handleForm.bind(this);
     this.Auth = new AuthService();
   }
 
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
-    })
-    console.log(this.state);
+    });
   }
 
   handleForm(event) {
@@ -28,7 +27,7 @@ export class LoginForm extends Component {
     this.Auth.login(this.state)
       .then(data => {
         localStorage.setItem('token', data.token);
-        localStorage.setItem('admin', data.body.admin);
+        localStorage.setItem('admin', data.admin);
         window.location = "../pages/Account"
       })
       .catch(err => {
