@@ -10,7 +10,6 @@ export default class AuthService {
             },
             body: JSON.stringify(body)
         }).then(res => {
-            console.log(res);
             return res.json();
         })
     }
@@ -20,11 +19,10 @@ export default class AuthService {
             'http://localhost:3030/api/v1/auth/register', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json; charset=utf-8'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(body)
         }).then(res => {
-            console.log(res);
             return res.json();
         })
     }

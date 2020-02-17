@@ -26,9 +26,14 @@ export class LoginForm extends Component {
     event.preventDefault();
     this.Auth.login(this.state)
       .then(data => {
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('admin', data.admin);
-        window.location = "account"
+        if(data.token !== null) {
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('admin', data.admin);
+          window.location = "account"
+        } else {
+          window.location.reload();
+        }
+        
       })
       .catch(err => {
         console.log(err);

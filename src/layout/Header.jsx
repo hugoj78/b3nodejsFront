@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import AuthService from '../services/auth.service'
-import { Button } from "react-bootstrap";
 
 export default class Header extends Component {
 
@@ -9,12 +8,7 @@ export default class Header extends Component {
 
         this.disconnect = this.disconnect.bind(this);
         this.Auth = new AuthService();
-
-        if (this.Auth.getToken() !== null) {
-            const profil = this.Auth.getUserProfil();
-        }
     }
-
 
     disconnect() {
         this.Auth.disconnectUser()
@@ -43,6 +37,7 @@ export default class Header extends Component {
                                 <a class="nav-link" href="/manager">Manager</a>
                             </li>
                             <li class="nav-item">
+                                {/* eslint-disable-next-line */}
                                 <a class="nav-link" onClick={this.disconnect}>Log Out</a>
                             </li>
                         </ul>
@@ -56,7 +51,6 @@ export default class Header extends Component {
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">

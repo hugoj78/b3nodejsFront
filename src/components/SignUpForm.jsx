@@ -3,8 +3,8 @@ import AuthService from '../services/auth.service'
 
 export class SignUpForm extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             email: '',
@@ -31,12 +31,10 @@ export class SignUpForm extends Component {
             event.preventDefault();
             this.Auth.SignUp(this.state)
               .then(data => {
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('admin', data.admin);
-                window.location = "login"
+                  window.location="./login"
               })
               .catch(err => {
-                console.log(err);
+                window.location.reload()
               })
           }
 
@@ -74,7 +72,7 @@ export class SignUpForm extends Component {
                     <div className="form-group">
                         <label htmlFor="">admin</label>
                         <small id="emailHelp" className="form-text text-muted">False by default</small>
-                        <input type="checkbox" name="admin" value="True" onChange={this.handleChange} className="form-control" placeholder="True" />
+                        <input type="checkbox" name="admin" value={true} onChange={this.handleChange} className="form-control" placeholder="True" />
                         
                     </div>
 
